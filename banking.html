@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header>
+        <h1 class="text-5xl text-center mt-16"> Give me some <span class="font-semibold text-purple-900">money!</span></h1>
+      </header>
+      <main class="w-3/4 mx-auto">
+          <!-- balance and  -->
+          <section class="mt-8">
+              <div class="grid grid-cols-3 gap-4  text-white">
+                  <div class="bg-violet-600 p-8 rounded text-center">
+                      <h3 class="text-2xl">Deposit</h3>
+                      <h4 class="text-3xl">$<span id="deposit-total">000</span></h4>
+                  </div>
+                  <div class="bg-indigo-600 p-8 rounded text-center">
+                      <h3 class="text-2xl">Widthdraw</h3>
+                      <h4 class="text-3xl">$ <span id="widthraw-total">000</span></h4>
+                  </div>
+                  <div class="bg-blue-900 p-8 rounded text-center ">
+                      <h3 class="text-2xl">Balance</h3>
+                      <h4 class="text-3xl">$<span id="balance-total">1200</span></h4>
+                  </div>
+                  
+               
+              </div>
+          </section>
+          <!-- deposit & withdrow -->
+          <section class="mt-3">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="bg-pink-400 p-8 rounded">
+                    <h4 class="text-2xl">Please Deposit</h4>
+                <div class="mt-4">
+                      <input id="deposit-input" class=" border rounded block w-3/4 py-2 px-3 text-gray-700 leading-tight  border-red-500 focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="$ amount you want to deposit">
+                      <button id="deposit-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" type="button">
+                        Deposit
+                      </button>
+                </div>
+                </div>
+                <div class="bg-pink-900 p-8 rounded">
+                    <h4 class="text-2xl">Please Widthdraw</h4>
+                <div class="mt-4">
+                      <input id="widthdraw-input" class=" border rounded block w-3/4 py-2 px-3 text-gray-700 leading-tight  border-red-500 focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="$ amount you want to widthdraw">
+                      <button id="widthdraw-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" type="button">
+                        widthdraw
+                      </button>
+                </div>
+                </div>
+              </div>
+            
+          </section>
+          
+      </main>
+
+
+      <script src="./js/banking.js"></script>
+
+      
+</body>
+</html>
