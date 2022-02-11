@@ -1,9 +1,19 @@
-document.getElementById('deposit-btn').addEventListener('click',function(){
- 
+function getInputValue(){
     const depositInput = document.getElementById('deposit-input');
-
     const depositAmountText = depositInput.value;
     const newDepositAmount = parseFloat(depositAmountText);
+    //clear deposit input filed value after click
+    depositInput.value = ''; 
+    return newDepositAmount;
+}
+
+
+document.getElementById('deposit-btn').addEventListener('click',function(){
+ 
+    /* const depositInput = document.getElementById('deposit-input');
+    const depositAmountText = depositInput.value;
+    const newDepositAmount = parseFloat(depositAmountText); */
+    const newDepositAmount = getInputValue();
 
     const depositTotal =document.getElementById('deposit-total');
     const previesDepositAmounttext = depositTotal.innerText;
@@ -16,8 +26,8 @@ document.getElementById('deposit-btn').addEventListener('click',function(){
     const previesBalance = parseFloat(previesBalanceText);
     const newtotalBalance = previesBalance + newDepositAmount;
     totalBalance.innerText = newtotalBalance;
-    //clear deposit input filed value after click
-    depositInput.value = ''; 
+    /* //clear deposit input filed value after click
+    depositInput.value = '';  */
 });
 // get Widthdraw
 document.getElementById('widthdraw-btn').addEventListener('click',function(){
