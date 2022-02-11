@@ -55,4 +55,3 @@ document.getElementById('widthdraw-btn').addEventListener('click',function(){
         console.log(alert('you can not widthraw more then your current balance'));
     }
 })
-let x= document.createElement('h1')
