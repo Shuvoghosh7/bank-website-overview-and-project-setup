@@ -1,52 +1,58 @@
-function getInputValue(){
-    const depositInput = document.getElementById('deposit-input');
-    const depositAmountText = depositInput.value;
-    const newDepositAmount = parseFloat(depositAmountText);
+function getInputValue(inputId){
+    const inputField = document.getElementById(inputId);
+    const inputAmountText = inputField.value;
+    const amountValue = parseFloat(inputAmountText);
     //clear deposit input filed value after click
-    depositInput.value = ''; 
-    return newDepositAmount;
+    inputField.value = ''; 
+    return amountValue;
+}
+function updateTotalFiled(totalFiledId,amount){
+    const totalElement =document.getElementById(totalFiledId);
+    const totelText = totalElement.innerText;
+    const previesTotal = parseFloat(totelText);
+    const totalAmount = previesTotal + amount;
+    totalElement.innerText= totalAmount ;
+}
+function getCurrentBalance(){
+    const totalBalance = document.getElementById('balance-total');
+    const previesBalanceText = totalBalance.innerText;
+    const previesBalance = parseFloat(previesBalanceText);
+    return  previesBalance;
+}
+function updateBalance(depositAmount,isAdd){
+    const totalBalance = document.getElementById('balance-total');
+    /* const previesBalanceText = totalBalance.innerText;
+    const previesBalance = parseFloat(previesBalanceText); */
+    const previesBalance = getCurrentBalance();
+    if(isAdd == true){
+        const newtotalBalance = previesBalance + depositAmount;
+        totalBalance.innerText = newtotalBalance;
+    }else{
+        const newtotalBalance = previesBalance - depositAmount;
+        totalBalance.innerText = newtotalBalance;
+    }
+    
 }
 
 
 document.getElementById('deposit-btn').addEventListener('click',function(){
- 
-    /* const depositInput = document.getElementById('deposit-input');
-    const depositAmountText = depositInput.value;
-    const newDepositAmount = parseFloat(depositAmountText); */
-    const newDepositAmount = getInputValue();
 
-    const depositTotal =document.getElementById('deposit-total');
-    const previesDepositAmounttext = depositTotal.innerText;
-    const previesDepositAmount = parseFloat(previesDepositAmounttext);
-    const totalDepositAmount = previesDepositAmount + newDepositAmount;
-    depositTotal.innerText= totalDepositAmount ;
-    // uupdate blance 
-    const totalBalance = document.getElementById('balance-total');
-    const previesBalanceText = totalBalance.innerText;
-    const previesBalance = parseFloat(previesBalanceText);
-    const newtotalBalance = previesBalance + newDepositAmount;
-    totalBalance.innerText = newtotalBalance;
-    /* //clear deposit input filed value after click
-    depositInput.value = '';  */
+    const newDepositAmount = getInputValue('deposit-input');
+    if(newDepositAmount > 0){
+        updateTotalFiled('deposit-total',newDepositAmount);
+        updateBalance(newDepositAmount,true);
+    }
 });
 // get Widthdraw
 document.getElementById('widthdraw-btn').addEventListener('click',function(){
-    const widthdrawInput = document.getElementById('widthdraw-input');
-    const newwidthdrawAmountText = widthdrawInput.value;
-    const newwidthdrawAmount = parseFloat(newwidthdrawAmountText);
-
-    const widthdrawTotal = document.getElementById('widthraw-total');
-    const previuswidthdrawAmountText = widthdrawTotal.innerText;
-    const previuswidthdrawAmount = parseFloat(previuswidthdrawAmountText)
-    const totalWidthdraw =  previuswidthdrawAmount + newwidthdrawAmount;
-    widthdrawTotal.innerText = totalWidthdraw;
-    // subtractio after widthdraw
-    const balanceTotal = document.getElementById('balance-total');
-    const prviesBalanceTotalText =  balanceTotal.innerText;
-    const prviesBalanceTotal = parseFloat(prviesBalanceTotalText);
-    const newbalanceTotal = prviesBalanceTotal - newwidthdrawAmount;
-    balanceTotal.innerText = newbalanceTotal;
-    //clear value
-    widthdrawInput.value = '';
-
+    const widthdrawAmount = getInputValue('widthdraw-input');
+    const currentBalance = getCurrentBalance();
+    if(widthdrawAmount > 0 && widthdrawAmount < currentBalance){
+        updateTotalFiled('widthraw-total',widthdrawAmount);
+        updateBalance(widthdrawAmount,false);
+    }
+    if(widthdrawAmount > currentBalance){
+        console.log(alert('you can not widthraw more then your current balance'));
+    }
 })
+let x= document.createElement('h1')
